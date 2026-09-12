@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Question ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  font-family:Arial,sans-serif; overflow:hidden;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#ff4d6d);
+  color:white;
+}
+.card{
+  width:min(90%,520px); padding:38px 25px; text-align:center;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.16); backdrop-filter:blur(15px);
+  border-radius:28px; box-shadow:0 20px 60px rgba(120,0,40,.25);
+}
+h1{font-size:clamp(28px,7vw,44px); margin:0 0 18px}
+p{font-size:18px; line-height:1.6; margin:10px 0 25px}
+.buttons{display:flex;justify-content:center;gap:18px;min-height:55px}
+button{
+  border:0;border-radius:999px;padding:14px 28px;font-size:17px;font-weight:bold;
+  cursor:pointer;transition:.25s;
+}
+#yes{background:white;color:#e83e68}
+#no{background:rgba(255,255,255,.25);color:white}
+#no.hidden{display:none}
+.heart{position:absolute;animation:float 6s linear infinite;opacity:.65}
+@keyframes float{
+  from{transform:translateY(110vh) rotate(0);opacity:0}
+  15%{opacity:.7} to{transform:translateY(-15vh) rotate(360deg);opacity:0}
+}
+#celebrate{display:none}
+#celebrate h2{font-size:42px;margin:0 0 12px}
+</style>
+</head>
+<body>
+<div class="card" id="main">
+  <h1>❤️ Will You Be Mine? ❤️</h1>
+  <p>
+    I noticed your pretty eyes,<br>
+    and honestly… I’ve liked you since the day I first saw you. ❤️<br><br>
+    I just wanted to tell you that I really like you.
+  </p>
+  <div class="buttons">
+    <button id="yes">YES ❤️</button>
+    <button id="no">NO</button>
+  </div>
+</div>
+
+<div class="card" id="celebrate">
+  <h2>❤️ Yay! ❤️</h2>
+  <p>Thank you for saying yes! You just made my day. 🥹❤️</p>
+</div>
+
+<script>
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const main = document.getElementById("main");
+const celebrate = document.getElementById("celebrate");
+
+no.addEventListener("click", () => {
+  no.classList.add("hidden");
+});
+
+yes.addEventListener("click", () => {
+  main.style.display = "none";
+  celebrate.style.display = "block";
+  for(let i=0;i<80;i++){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.textContent="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(16+Math.random()*28)+"px";
+    h.style.animationDuration=(3+Math.random()*4)+"s";
+    h.style.animationDelay=Math.random()*1.5+"s";
+    document.body.appendChild(h);
+  }
+});
+
+for(let i=0;i<20;i++){
+  const h=document.createElement("div");
+  h.className="heart"; h.textContent="♡";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(18+Math.random()*25)+"px";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  h.style.animationDelay=Math.random()*5+"s";
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
